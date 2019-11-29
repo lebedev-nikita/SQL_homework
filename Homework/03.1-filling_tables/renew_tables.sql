@@ -15,7 +15,7 @@ CREATE TABLE ds_review (
 	user_age INT,
 	user_gender VARCHAR(8),
 
-	stars NUMERIC,
+	stars INT,
 	review_date DATE,
 	advantages TEXT,
 	disadvantages TEXT
@@ -33,7 +33,7 @@ CREATE TABLE dc_review (
 	user_age INT,
 	user_gender VARCHAR(7),
 
-	stars NUMERIC,
+	stars INT,
 	review_date DATE,
 	advantages TEXT,
 	disadvantages TEXT

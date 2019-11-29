@@ -2,10 +2,10 @@
 #define n_dc 10000
 #define n_user 10000
 
-#define n_in_stock 1000000
-#define n_ds_review 10000
-#define n_dc_review 10000
-#define n_online_order 10000
+#define n_in_stock 		100000
+#define n_online_order 	100000
+#define n_ds_review 	100000
+#define n_dc_review 	100000
 #define n_ds_adv 7
 #define n_dc_adv 7
 
@@ -24,6 +24,9 @@ void fill_online_order()
 	long int ds_id;
 	long int user_id;
 	long int dc_id1, dc_id2, dc_id3, dc_id4;
+	float price1, price2, price3, price4;
+	int amount1, amount2, amount3, amount4;
+	float total_price;
 
 	fprintf(out, "BEGIN;\n");
 	for (long int i = 0; i < n_online_order; i++)
@@ -35,18 +38,28 @@ void fill_online_order()
 		dc_id2 = rand() % n_dc;
 		dc_id3 = rand() % n_dc;
 		dc_id4 = rand() % n_dc;
-		fprintf(out, "INSERT INTO online_order VALUES(%ld, %ld, \'%s\', \'%s%s%s%s\', %ld, \'%s\', %d, \'%s\', ARRAY['{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb], \'201%d-%d-%d\', \'201%d-%d-%d\', \'201%d-%d-%d\', 10 );\n",
+		price1 = ((float)(rand()%1000000))/100;
+		price2 = ((float)(rand()%1000000))/100;
+		price3 = ((float)(rand()%1000000))/100;
+		price4 = ((float)(rand()%1000000))/100;
+		amount1 = rand() % 5;
+		amount2 = rand() % 5;
+		amount3 = rand() % 5;
+		amount4 = rand() % 5;
+		total_price = price1 * amount1 + price2 * amount2 + price3 * amount3 + price4 * amount4;
+		fprintf(out, "INSERT INTO online_order VALUES(%ld, %ld, \'%s\', \'%s%s%s%s\', %ld, \'%s\', %d, \'%s\', ARRAY['{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb, '{\"dc_id\":%ld, \"dc_name\": \"%s%s%s%s\", \"item_price\":%.2f, \"amount\":%d}'::jsonb], \'201%d-%d-%d\', \'201%d-%d-%d\', \'201%d-%d-%d\', %.2f );\n",
 			   i, ds[ds_id].id, ds[ds_id].city, ds[ds_id].name1, ds[ds_id].name2, ds[ds_id].name3, ds[ds_id].name4,
 			   user[user_id].id, user[user_id].city, user[user_id].age, user[user_id].gender,
 			   //JSON
-			   dc_id1 , dc[dc_id1].name1, dc[dc_id1].name2, dc[dc_id1].name3, dc[dc_id1].name4, ((float)(rand()%1000000))/100, rand() % 30,
-			   dc_id2 , dc[dc_id2].name1, dc[dc_id2].name2, dc[dc_id2].name3, dc[dc_id2].name4, ((float)(rand()%1000000))/100, rand() % 30,
-			   dc_id3 , dc[dc_id3].name1, dc[dc_id3].name2, dc[dc_id3].name3, dc[dc_id3].name4, ((float)(rand()%1000000))/100, rand() % 30,
-			   dc_id4 , dc[dc_id4].name1, dc[dc_id4].name2, dc[dc_id4].name3, dc[dc_id4].name4, ((float)(rand()%1000000))/100, rand() % 30,
+			   dc_id1 , dc[dc_id1].name1, dc[dc_id1].name2, dc[dc_id1].name3, dc[dc_id1].name4, price1, amount1,
+			   dc_id2 , dc[dc_id2].name1, dc[dc_id2].name2, dc[dc_id2].name3, dc[dc_id2].name4, price2, amount2,
+			   dc_id3 , dc[dc_id3].name1, dc[dc_id3].name2, dc[dc_id3].name3, dc[dc_id3].name4, price3, amount3,
+			   dc_id4 , dc[dc_id4].name1, dc[dc_id4].name2, dc[dc_id4].name3, dc[dc_id4].name4, price4, amount4,
 			   //JSON
 			   rand() % 10, 1 + rand() % 12, 1 + rand() % 28,
 			   rand() % 10, 1 + rand() % 12, 1 + rand() % 28,
-			   rand() % 10, 1 + rand() % 12, 1 + rand() % 28
+			   rand() % 10, 1 + rand() % 12, 1 + rand() % 28,
+			   total_price
 		);
 	}
 	fprintf(out, "COMMIT;\n");
