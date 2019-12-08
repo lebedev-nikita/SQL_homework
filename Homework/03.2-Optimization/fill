@@ -1,0 +1,4 @@
+../03.1-filling_tables/out_ds_review.sql 
+\i ../03.1-filling_tables/out_dc_review.sql 
+\i ../03.1-filling_tables/out_online_order.sql 
+\i ../03.1-filling_tables/out_in_stock.sql 

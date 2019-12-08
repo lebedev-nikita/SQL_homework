@@ -1,0 +1,4 @@
+-- Полнотекстовый поиск: количетство отзывов со словом качество
+SELECT count(advantages), advantages FROM ds_review 
+WHERE to_tsvector(advantages) @@ to_tsquery('качество') 
+GROUP BY advantages;

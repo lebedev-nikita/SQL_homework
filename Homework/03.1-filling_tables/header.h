@@ -9,6 +9,8 @@ struct ds_t
 	char * name3;
 	char * name4;
 	char * city;
+	char * city1;
+	char * city2;
 };
 
 struct dc_t
