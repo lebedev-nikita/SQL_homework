@@ -9,8 +9,11 @@ struct ds_t
 	char * name3;
 	char * name4;
 	char * city;
-	char * city1;
-	char * city2;
+	long int phone;
+	char * email1;
+	char * email2;
+	char * email3;
+
 };
 
 struct dc_t
@@ -29,4 +32,8 @@ struct user_t
 	char * gender;
 	char * city;
 	int age;
+	long int phone;
+	char * email1;
+	char * email2;
+	char * email3;
 };

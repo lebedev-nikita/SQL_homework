@@ -29,6 +29,8 @@ char* dc_adv[n_dc_adv] = {"цена", "качество", "простота", "�
 
 void fill_ds()
 {
+	long int j = rand();
+
 	for (long int i = 0; i < n_ds; i++) 
 	{
 		ds[i].id = i;
@@ -37,8 +39,10 @@ void fill_ds()
 		ds[i].name3 = name3[i % 1000 / 100];
 		ds[i].name4 = name4[i / 1000];
 		ds[i].city = city[rand() % 10];
-		ds[i].city = city1[rand() % 10];
-		ds[i].city = city2[rand() % 10];
+		user[i].phone = rand() / 1000000000;
+		ds[i].email1 = name1[j % 10];
+		ds[i].email2 = name2[j / 10 % 10];
+		ds[i].email3 = name3[j / 100 % 10];
 	}
 }
 
@@ -57,11 +61,16 @@ void fill_dc()
 
 void fill_user()
 {
+	long int j = rand();
 	for (long int i = 0; i < n_user; i++) 
 	{
 		user[i].id = i;
 		user[i].gender = gender[i&1];
 		user[i].city = city[rand() % 10];
 		user[i].age = 18 + rand()%64;
+		user[i].phone = rand() / 1000000000;
+		user[i].email1 = name1[j % 10];
+		user[i].email2 = name2[j / 10 % 10];
+		user[i].email3 = name3[j / 100 % 10];
 	}
 }
