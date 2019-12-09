@@ -29,10 +29,11 @@ char* dc_adv[n_dc_adv] = {"цена", "качество", "простота", "�
 
 void fill_ds()
 {
-	long int j = rand();
+	long int j;
 
 	for (long int i = 0; i < n_ds; i++) 
 	{
+		j = rand();
 		ds[i].id = i;
 		ds[i].name1 = name1[i % 10];
 		ds[i].name2 = name2[i % 100 / 10];
@@ -41,8 +42,8 @@ void fill_ds()
 		ds[i].city = city[rand() % 10];
 		user[i].phone = rand() / 1000000000;
 		ds[i].email1 = name1[j % 10];
-		ds[i].email2 = name2[j / 10 % 10];
-		ds[i].email3 = name3[j / 100 % 10];
+		ds[i].email2 = name2[j % 100 / 10];
+		ds[i].email3 = name3[j % 1000 / 100];
 	}
 }
 
@@ -61,16 +62,21 @@ void fill_dc()
 
 void fill_user()
 {
-	long int j = rand();
+	long int j;
 	for (long int i = 0; i < n_user; i++) 
 	{
+		j = rand();
 		user[i].id = i;
 		user[i].gender = gender[i&1];
 		user[i].city = city[rand() % 10];
 		user[i].age = 18 + rand()%64;
-		user[i].phone = rand() / 1000000000;
+		user[i].phone = rand() % 1000000000;
 		user[i].email1 = name1[j % 10];
-		user[i].email2 = name2[j / 10 % 10];
-		user[i].email3 = name3[j / 100 % 10];
+		user[i].email2 = name2[j % 100 / 10];
+		user[i].email3 = name3[j % 1000 / 100];
+		j = rand();
+		user[i].address1 = name1[j % 10];
+		user[i].address2 = name2[j % 100 / 10];
+		user[i].address3 = name3[j % 1000 / 100];
 	}
 }

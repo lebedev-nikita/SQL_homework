@@ -144,7 +144,7 @@ void fill_user_info()
 	fprintf(out, "BEGIN;\n");
 	for (long int i = 0; i < n_user; i++)
 	{
-		fprintf(out, "INSERT INTO user_info VALUES (%ld, \'%s\', %d, \'%s\', \'%ld\', \'%s%s%s@gmail.com\');\n",
+		fprintf(out, "INSERT INTO user_info VALUES (%ld, \'%s\', %d, \'%s\', \'%ld\', \'%s%s%s@gmail.com\', \'%s%s%s\');\n",
 			   i, 
 			   user[i].city, 
 			   user[i].age, 
@@ -152,7 +152,10 @@ void fill_user_info()
 			   user[i].phone,
 			   user[i].email1,
 			   user[i].email2,
-			   user[i].email3
+			   user[i].email3,
+			   user[i].address1,
+			   user[i].address2,
+			   user[i].address3
 			   );
 	}
 	fprintf(out, "COMMIT;\n");
@@ -214,12 +217,12 @@ int main() {
 	fill_dc();
 	fill_user();
 
-	// fill_in_stock();
-	// fill_ds_review();
-	// fill_dc_review();
-	// fill_online_order();
-	// fill_user_info();
-	// fill_drug_store();
+	fill_in_stock();
+	fill_ds_review();
+	fill_dc_review();
+	fill_online_order();
+	fill_user_info();
+	fill_drug_store();
 	fill_drug_class();
 
 }

@@ -36,4 +36,8 @@ struct user_t
 	char * email1;
 	char * email2;
 	char * email3;
+	char * address1;
+	char * address2;
+	char * address3;
+	
 };
