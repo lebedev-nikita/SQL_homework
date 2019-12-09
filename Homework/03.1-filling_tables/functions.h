@@ -40,7 +40,7 @@ void fill_ds()
 		ds[i].name3 = name3[i % 1000 / 100];
 		ds[i].name4 = name4[i / 1000];
 		ds[i].city = city[rand() % 10];
-		user[i].phone = rand() / 1000000000;
+		user[i].phone = rand() % 1000000000;
 		ds[i].email1 = name1[j % 10];
 		ds[i].email2 = name2[j % 100 / 10];
 		ds[i].email3 = name3[j % 1000 / 100];

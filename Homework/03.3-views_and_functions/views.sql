@@ -27,7 +27,7 @@ SELECT * FROM ds_128_online_orders;
 --информацию об аптеке
 
 DROP VIEW IF EXISTS full_ds_review;
-CREATE VIEW full_ds_review AS
+CREATE MATERIALIZED VIEW full_ds_review AS
     SELECT ui.user_id AS USER_id, ui.city AS u_city, ui.age AS age, ui.gender, ui.phone AS u_phone, ui.email AS u_email,
            dr.review_id AS REVIEW_id, dr.stars, dr.review_date AS date, dr.advantages, dr.disadvantages,
            ds.ds_id AS DS_id, ds.ds_name, ds.city AS ds_city, ds.phone, ds.email AS ds_email
@@ -37,3 +37,15 @@ CREATE VIEW full_ds_review AS
 SELECT avg(stars)
     FROM full_ds_review 
     WHERE u_city = 'Москва';
+
+-- СОЗДАТЬ ПРЕДСТАВЛЕНИЕ, ЧЕРЕЗ КОТОРОЕ МОЖНО МЕНЯТЬ ДАННЫЕ
+
+DROP VIEW changable_view;
+CREATE VIEW changable_view AS
+    SELECT age, city FROM user_info;
+
+SELECT * FROM changable_view;
+SELECT * FROM changable_view WHERE age = 33;
+UPDATE changable_view SET city = 'Москва' WHERE age = 33;
+SELECT * FROM changable_view WHERE age = 33;
+SELECT age, city FROM user_info WHERE age = 33;
